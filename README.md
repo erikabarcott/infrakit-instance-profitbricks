@@ -13,8 +13,10 @@
 
 
 ## Introduction
+This is a [Docker InfraKit](https://github.com/docker/infrakit) instance plugin for creating and managing ProfitBricks servers. 
 
-This is an [InfraKit](https://github.com/docker/infrakit) instance plugin for creating and managing ProfitBricks servers.
+Docker InfraKit is an open source toolkit which makes infrastructure automation easier by breaking it down into pluggable components. These components collaborate to make the infrastructure self-healing, thus ensuring that the infrastructure always matches the original specifications. You can read more about Docker Infrakit's history, design, and features on [the official Docker website](https://blog.docker.com/2016/10/introducing-infrakit-an-open-source-toolkit-for-declarative-infrastructure/).
+
 The plugin development is work in progress. Infrakit is also still being developed and is constantly changing. 
 
 ## Usage
