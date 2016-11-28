@@ -1,0 +1,41 @@
+{
+  "ID": "pb-example",
+  "Properties": {
+    "Allocation": {
+      "Size": 1
+    },
+    "Instance": {
+      "Plugin": "infrakit-instance-profitbricks",
+      "Properties": {
+        "ProfitBricksInstancesInput": {
+          "DatacenterId": "aafa9ac4-e05b-4f84-b5cb-f69d0903f923",
+          "Name": "Infrakit test01",
+          "Image": "Ubuntu-16.04",
+          "SSHKeyPath": "/Users/jasmingacic/.ssh/id_rsa",
+          "Location": "us/las",
+          "Cores": 1,
+          "Ram": 1024,
+          "DiskSize": 5,
+          "DiskType": "SSD",
+          "AvailabilityZone": "AUTO",
+          "StaticIP": false,
+          "Firewall": {
+            "Name": "firewall name",
+            "Protocol": "TCP"
+          }
+        },
+        "Tags": {
+          "Name": "infrakit-example"
+        }
+      }
+    },
+    "Flavor": {
+      "Plugin": "flavor-vanilla",
+      "Properties": {
+        "Init": [
+          "sh -c \"echo 'Hello, World!' > /hello\""
+        ]
+      }
+    }
+  }
+}
