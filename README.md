@@ -2,6 +2,18 @@
 
 [![Build Status](https://travis-ci.org/StackPointCloud/infrakit-instance-profitbricks.svg?branch=master)](https://travis-ci.org/StackPointCloud/infrakit-instance-profitbricks)
 
+
+## Table of Contents
+* [Introduction](#introduction)
+* [Usage](#usage)
+  * [Managing groups](#managing-groups)
+* [Design Notes](#design-notes)
+* [Configuration Parameters](#configuration-parameters)
+  * [Firewall Parameters](#firewall-parameters)
+
+
+## Introduction
+
 This is an [InfraKit](https://github.com/docker/infrakit) instance plugin for creating and managing ProfitBricks servers.
 The plugin development is work in progress. Infrakit is also still being developed and is constantly changing. 
 
@@ -10,13 +22,13 @@ The plugin development is work in progress. Infrakit is also still being develop
 Start with building the InfraKit [binaries](https://github.com/docker/infrakit/blob/master/README.md#binaries).
 Currently, you can use this plugin with a plain [vanilla flavor plugin](https://github.com/docker/infrakit/tree/master/pkg/example/flavor/vanilla) and the [default group plugin](https://github.com/docker/infrakit/blob/master/cmd/group/README.md).
 
-To build the ProfitBricks Instance plugin, follow next steps:
+To build the ProfitBricks Instance plugin:
 
-1. Install [GO](https://golang.org/)  
-2. Get the source code `go get github.com/profitbricks/infrakit-instance-profitbricks` 
-3. Build the binaries. In root of the folder run `make` 
+1. Install [GO](https://golang.org/).  
+2. Get the source code: `go get github.com/profitbricks/infrakit-instance-profitbricks` 
+3. Build the binaries. In the root of the folder, run `make` 
 
-Use the help command to list the command line options available with the plugin.
+Use the `help` command to list the command line options available with the plugin:
 
 ```shell
 $ ./infrakit-instance-profitbricks --help
@@ -48,9 +60,9 @@ $ ./infrakit-instance-profitbricks
 INFO[0000] Listening at: /Users/jasmingacic/.infrakit/plugins/infrakit-instance-profitbricks 
 ```
 
-Note that `--password` and `--username` are required, if not provided environment variables `PROFITBRICKS_USERNAME` and `PROFITBRICKS_PASSWORD` are expected to be set.
+Note: The username and password are required. These can be provided either by using the  `--password` and `--username` flags, or by setting the the `PROFITBRICKS_USERNAME` and `PROFITBRICKS_PASSWORD` environment variables.
 
-From the InfraKit build directory run:
+From the InfraKit build directory, run:
 
 ```shell
 $ build/infrakit-group-default
@@ -60,8 +72,7 @@ $ build/infrakit-group-default
 $ build/infrakit-flavor-vanilla
 ```
 
-Use the provided configuration example [pbexample.json](./pbexample.json) as a reference and feel free to change 
-the values of the properties.
+Use the provided configuration example [pbexample.json](./pbexample.json) as a reference and feel free to change the values of the properties.
 
 ```shell
 $ cat << EOF > pb.json
@@ -144,7 +155,7 @@ Global Flags:
 Use "build/infrakit group [command] --help" for more information about a command.
 ```
 
-Describe group command displays info about the instances in a tabular form.
+The `describe group` command displays info about the instances in a tabular form.
 
 ```
 $ ./infrakit group describe pb-example
@@ -163,20 +174,20 @@ $ build/infrakit group commit pb.json
 Committed pb-example: Terminating 2 instances to reduce the group size to 1
 ```
 
-Run destroy command to terminate a group monitoring and delete all instances, i.e., servers in the group.
+Run the `destroy` command to terminate a group monitoring and delete all instances, i.e., servers in the group.
 
 ```
 $ build/infrakit group destroy myGroup
 destroy pb-example initiated
 ```
 
-## Design notes
+## Design Notes
 
-The plugin stores a basic info about the instances onto the provided location (`--dir`). You can stop and start a group monitoring without redeploying the servers.
+The plugin stores basic info about the instances at the provided location (`--dir`). You can stop and start a group monitoring without redeploying the servers.
 
 The instance file names consist of the instance (server) UUID and `.pbstate` extension.
 
-## Configuration parameters
+## Configuration Parameters
 
 Required parameters:
 
@@ -199,7 +210,7 @@ Optional parameters:
     Firewall         - (object) Firewall Rule object to be provisoned under the server.
 ```
 
-Firewall parameters
+### Firewall Parameters
 
 Required Firewall Rule parameters:
 ```
