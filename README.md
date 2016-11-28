@@ -201,11 +201,12 @@ Optional parameters:
 
 Firewall parameters
 
-Required Firewall Rule parameter
+Required Firewall Rule parameters:
 ```
     Protocol       - (string) The protocol for the rule: TCP, UDP, ICMP, ANY.
 ```
 
+Optional Firewall Rule parameters:
 ```
     
     Name           - (string) Name of the Firewall rule
